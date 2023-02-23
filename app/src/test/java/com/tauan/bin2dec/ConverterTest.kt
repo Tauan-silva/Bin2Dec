@@ -19,4 +19,15 @@ class ConverterTest {
         assertThat(result).isEqualTo(0)
 
     }
+
+    @Test
+    fun given_11AsParameter_when_CallsFunctionDecimalToBinary_then_ShouldReturnsBinaryNumberObjectWith1011Value() {
+
+        val parameter = 11
+
+        val result = Converter.decimalToBinary(parameter)
+
+        assertThat(result.ownValue).isEqualTo(1011L)
+
+    }
 }

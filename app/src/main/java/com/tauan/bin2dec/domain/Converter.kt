@@ -1,5 +1,6 @@
 package com.tauan.bin2dec.domain
 
+import com.tauan.bin2dec.domain.model.BinaryNumber
 import kotlin.math.pow
 
 object Converter {
@@ -18,5 +19,21 @@ object Converter {
         }
 
         return decimal
+    }
+
+    fun decimalToBinary(decimal: Int): BinaryNumber {
+        var mutableDecimal = decimal
+        var binaryNumber = 0L
+        var index = 1
+        var remainder: Int
+
+        while (mutableDecimal != 0) {
+            remainder = mutableDecimal % 2
+            mutableDecimal /= 2
+            binaryNumber += remainder * index
+            index *= 10
+        }
+
+        return BinaryNumber(binaryNumber.toString())
     }
 }
