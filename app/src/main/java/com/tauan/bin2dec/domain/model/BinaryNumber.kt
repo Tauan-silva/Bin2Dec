@@ -1,13 +1,13 @@
 package com.tauan.bin2dec.domain.model
 
-import com.tauan.bin2dec.domain.interfaces.NumberSystem
 import kotlin.properties.Delegates
 
-class BinaryNumber(value: String) : NumberSystem {
+class BinaryNumber(value: String) {
 
     private val calculator = BinaryCalculator()
-    var ownValue by Delegates.notNull<Long>()
-        private set
+
+    private var ownValue by Delegates.notNull<Long>()
+
 
     init {
         if (!isValidNumber(value)) {
@@ -17,7 +17,7 @@ class BinaryNumber(value: String) : NumberSystem {
         }
     }
 
-    override fun isValidNumber(value: String): Boolean {
+    private fun isValidNumber(value: String): Boolean {
         var isValid = true
         for (number in value) {
             if (number != '0' && number != '1') {
@@ -25,33 +25,26 @@ class BinaryNumber(value: String) : NumberSystem {
                 break
             }
         }
-        return isValid
+        return isValid && value.isNotEmpty()
     }
 
-    override fun plus(value: NumberSystem): NumberSystem {
-//        return when (value) {
-//            is BinaryNumber -> {
-//                val result = calculator.add(this, value)
-//                result
-//            }
-//            is OctalNumber -> {
-//
-//                val result = calculator.add(this)
-//                result
-//            }
-//        }
-        TODO("Not yet implemented")
+    fun plus(value: BinaryNumber): BinaryNumber {
+        return calculator.add(this, value)
     }
 
-    override fun sub(value: NumberSystem): NumberSystem {
-        TODO("Not yet implemented")
+    fun sub(value: BinaryNumber): BinaryNumber {
+        return calculator.sub(this, value)
     }
 
-    override fun multiple(value: NumberSystem): NumberSystem {
-        TODO("Not yet implemented")
+    fun multiple(value: BinaryNumber): BinaryNumber {
+        return calculator.multiple(this, value)
     }
 
-    override fun div(value: NumberSystem): NumberSystem {
-        TODO("Not yet implemented")
+    fun div(value: BinaryNumber): BinaryNumber {
+        return calculator.div(this, value)
+    }
+
+    override fun toString(): String {
+        return ownValue.toString()
     }
 }

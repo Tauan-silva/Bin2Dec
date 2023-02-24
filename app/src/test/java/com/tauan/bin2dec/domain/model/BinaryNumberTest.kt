@@ -6,7 +6,6 @@ import org.junit.Test
 
 class BinaryNumberTest {
 
-
     @Test
     fun `should throws IllegalArgumentException when receives some value different to 0 or 1 as parameter`() {
         val invalidValue = "101201"
@@ -16,7 +15,7 @@ class BinaryNumberTest {
     }
 
     @Test
-    fun `plus() function should returns a value instance of BinaryNumber when receive a value with same instance`() {
+    fun `plus function should returns a value instance of BinaryNumber when receive a value with same instance`() {
         val binaryNumber = BinaryNumber("101110")
         val binaryNumberParameter = BinaryNumber("1010")
 

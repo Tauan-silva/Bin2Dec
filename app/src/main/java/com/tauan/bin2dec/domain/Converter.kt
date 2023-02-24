@@ -5,8 +5,9 @@ import kotlin.math.pow
 
 object Converter {
 
-    fun binaryToDecimal(binaryString: String): Int {
+    fun binaryToDecimal(binaryNumber: BinaryNumber): Int {
         var decimal = 0
+        val binaryString = binaryNumber.toString()
 
         for ((position, index) in (binaryString.length - 1 downTo 0).withIndex()) {
             val digit = binaryString[index].toString().toInt()
